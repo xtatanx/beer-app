@@ -7,7 +7,7 @@ const useAutocomplete = (query: string | null) => {
       query
         ? `/api/autocomplete?${new URLSearchParams({ term: query })}`
         : null,
-      (url) => fetch(url).then((res) => res.json()),
+      (url: string) => fetch(url).then((res) => res.json()),
       {
         keepPreviousData: true,
       }
