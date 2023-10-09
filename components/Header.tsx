@@ -1,11 +1,19 @@
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { MdArrowDropDown } from 'react-icons/md';
 import useUser from '../hooks/useUser';
 import Autocomplete from './Autocomplete';
 import Button from './Button';
-import DropDown from './DropDown';
 import Image from './Image';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from './Dropdown';
+import { User, LogOut } from 'lucide-react';
 
 const Header = () => {
   const router = useRouter();
@@ -22,8 +30,8 @@ const Header = () => {
 
     if (session) {
       return (
-        <DropDown>
-          <DropDown.Toggle>
+        <DropdownMenu>
+          <DropdownMenuTrigger>
             <div className="flex items-center">
               <div className="relative aspect-square w-10 shrink-0 overflow-hidden rounded-full bg-gray-200">
                 {profileImage ? (
@@ -34,26 +42,47 @@ const Header = () => {
                   </span>
                 )}
               </div>
-              <MdArrowDropDown size={24} />
             </div>
-          </DropDown.Toggle>
-          <DropDown.Menu>
-            <DropDown.MenuItem
-              onClick={() => {
-                router.push('/cuenta');
-              }}
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="max-w-[15rem]" loop align="end">
+            <DropdownMenuLabel asChild className="pb-0">
+              <p className="truncate">
+                {user?.firstName} {user?.lastName}
+              </p>
+            </DropdownMenuLabel>
+            <DropdownMenuLabel
+              asChild
+              className="pt-0 font-normal text-gray-700"
             >
-              Mi Perfil
-            </DropDown.MenuItem>
-            <DropDown.MenuItem
-              onClick={() => {
-                signOut();
-              }}
-            >
-              Cerrar sesion
-            </DropDown.MenuItem>
-          </DropDown.Menu>
-        </DropDown>
+              <p>{user?.email}</p>
+            </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => {
+                  router.push('/cuenta');
+                }}
+              >
+                <div className="flex w-full flex-row items-center justify-between gap-3">
+                  Mi Perfil
+                  <User size={18}></User>
+                </div>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="cursor-pointer"
+                onClick={() => {
+                  signOut();
+                }}
+              >
+                <div className="flex w-full flex-row items-center justify-between gap-3">
+                  Cerrar sesion
+                  <LogOut size={18}></LogOut>
+                </div>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       );
     } else {
       return <Button onClick={() => signIn()}>Iniciar sesion</Button>;
