@@ -15,25 +15,28 @@
   },
   "dependencies": {
     "@floating-ui/react": "^0.15.0",
-    "@next-auth/mongodb-adapter": "^1.1.1",
+    "@next-auth/mongodb-adapter": "^1.1.3",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@types/formidable": "^2.0.5",
     "class-variance-authority": "^0.4.0",
     "classnames": "^2.3.2",
     "cloudinary": "^1.33.0",
+    "clsx": "^2.0.0",
     "date-fns": "^2.29.3",
     "formidable": "^2.1.1",
     "formik": "^2.2.9",
     "lodash": "^4.17.21",
-    "mongodb": "^4.11.0",
+    "lucide-react": "^0.284.0",
+    "mongodb": "5.8",
     "next": "12.3.1",
     "next-auth": "^4.18.6",
     "nodemailer": "^6.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
-    "swr": "^2.0.0",
-    "tailwind-merge": "^1.8.1",
+    "tailwind-merge": "^1.14.0",
     "tailwindcss": "^3.2.7",
+    "tailwindcss-animate": "^1.0.7",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },
@@ -62,11 +65,11 @@
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "storybook": "^7.0.0-beta.19",
+    "swr": "^2.2.4",
     "typescript": "4.8.4"
   },
   "volta": {
-    "node": "16.15.1",
-    "npm": "8.11.0"
+    "node": "18.18.0"
   },
   "msw": {
     "workerDirectory": "public"

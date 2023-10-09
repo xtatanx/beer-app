@@ -64,7 +64,6 @@ const Home: NextPageWithLayout<IndexProps> = ({
 
 export async function getStaticProps() {
   try {
-    debugger;
     const mostVotedBeers = await getAll({ limit: '8', sort: 'rate-desc' });
     const lastBeers = await getAll({ limit: '4', sort: 'date-desc' });
     return {
@@ -73,9 +72,7 @@ export async function getStaticProps() {
         lastBeers: JSON.parse(JSON.stringify(lastBeers)),
       },
     };
-  } catch (e) {
-    debugger;
-  }
+  } catch (e) {}
 }
 
 export default Home;

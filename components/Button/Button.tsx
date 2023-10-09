@@ -1,10 +1,10 @@
 import { VariantProps } from 'class-variance-authority';
 import React from 'react';
-import cn from '../../lib/cn';
 import type {
   PolymorphicComponentPropWithRef,
   PolymorphicRef,
 } from '../../types/polymorphic-components';
+import cn from '@/lib/cn';
 
 const buttonClasses = cn(
   'rounded font-bold whitespace-nowrap disabled:bg-zinc-400 disabled:text-zinc-500 disabled:pointer-events-none',

@@ -10,7 +10,7 @@ const useSearch = ([query, type]: [string | null, string | null]) => {
             ...(type && { type }),
           })}`
         : null,
-      (url) => fetch(url).then((res) => res.json())
+      (url: string) => fetch(url).then((res) => res.json())
     );
 
   return { result: data, error, isLoading, mutate, isValidating };
