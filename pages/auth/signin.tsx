@@ -1,9 +1,9 @@
 import { getCsrfToken, getProviders, signIn } from 'next-auth/react';
 import { NextPageWithLayout } from '../_app';
 import { FcGoogle } from 'react-icons/fc';
-import Button from '../../components/Button';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
+import { Button } from '@/components/Button';
 
 type SignInErrorTypes =
   | 'Signin'
@@ -104,7 +104,7 @@ const SignIn: NextPageWithLayout<SignInProps> = ({
               <button
                 key={provider.name}
                 onClick={() => signIn(provider.id, { callbackUrl })}
-                className="flex w-full items-center justify-center gap-2 rounded border border-gray-400 py-3 px-8 text-lg font-bold hover:bg-gray-200"
+                className="flex h-12 w-full items-center justify-center gap-2 rounded border border-gray-400 px-8 text-lg font-bold hover:bg-gray-200"
               >
                 <FcGoogle size={24}></FcGoogle>
                 Ingresar con {provider.name}

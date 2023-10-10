@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { BsImage, BsPlusLg, BsStar, BsStarFill } from 'react-icons/bs';
 import useUser from '../../hooks/useUser';
-import Button from '../Button';
+import { Button } from '@/components/Button';
 import { IoMdCloseCircle } from 'react-icons/io';
 import Image from '../Image';
 import useBeerComments from '../../hooks/useBeerComments';
@@ -226,11 +226,13 @@ const ReviewBox = ({
                 onChange={handleImageChange}
               />
             </div>
-            <div className="self-end">
-              <Button type="submit" disabled={isDisabledSubmit}>
-                Publicar
-              </Button>
-            </div>
+            <Button
+              type="submit"
+              disabled={isDisabledSubmit}
+              className="self-end"
+            >
+              Publicar
+            </Button>
           </div>
         </form>
       ) : (

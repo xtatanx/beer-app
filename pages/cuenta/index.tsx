@@ -7,10 +7,10 @@ import { ChangeEvent, useRef } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { unstable_serialize } from 'swr';
 import * as Yup from 'yup';
-import Button from '../../components/Button';
 import useUser from '../../hooks/useUser';
 import { getUser } from '../../lib/userService';
 import { authOptions } from '../api/auth/[...nextauth]';
+import { Button } from '@/components/Button';
 
 // TODO: unify Provider type
 type Provider = {
@@ -117,7 +117,7 @@ const Account = ({ providers }: AccountProps) => {
                 {user.firstName} {user.lastName}
               </h2>
               <button
-                className="cursor-pointer text-sm font-bold text-yellow-500 hover:text-yellow-400"
+                className="cursor-pointer text-sm font-bold text-primary hover:text-primary/90"
                 onClick={handlePicBtn}
               >
                 Cambiar foto de perfil
@@ -219,7 +219,7 @@ const Account = ({ providers }: AccountProps) => {
             {providers?.google ? (
               <button
                 onClick={handleGoogleClick}
-                className="flex w-full items-center justify-center gap-2 rounded border border-gray-400 py-3 px-8 font-bold hover:bg-gray-200 disabled:border-gray-200 disabled:bg-transparent disabled:text-gray-300"
+                className="flex h-11 w-full items-center justify-center gap-2 rounded border border-gray-400 px-8 font-bold hover:bg-gray-200 disabled:border-gray-200 disabled:bg-transparent disabled:text-gray-300"
                 disabled={hasGoogleLinked}
               >
                 <FcGoogle size={24}></FcGoogle>
