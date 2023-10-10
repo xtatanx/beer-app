@@ -9,13 +9,13 @@ import {
   BsStarHalf,
   BsSuitHeartFill,
 } from 'react-icons/bs';
-import Button from '../../components/Button';
 import ReviewBox from '../../components/ReviewBox';
 import { getById } from '../../lib/beerService';
 import { getAll } from '../../lib/commentService';
 import { BeerResponse } from '../../types/beer';
 import { CommentResponse } from '../../types/comment';
 import useBeerComments from '../../hooks/useBeerComments';
+import { Button } from '@/components/Button';
 
 type BeerDetailQuery = {
   beerId: string;
@@ -154,7 +154,9 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
             </h2>
             {status === 'unauthenticated' ? (
               <div>
-                <Button onClick={handleAddReview}>Agregar reseña</Button>
+                <Button variant="outline" onClick={handleAddReview}>
+                  Agregar reseña
+                </Button>
               </div>
             ) : null}
           </div>
