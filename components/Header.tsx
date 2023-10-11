@@ -2,7 +2,6 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import useUser from '../hooks/useUser';
 import Autocomplete from './Autocomplete';
-import Button from './Button';
 import Image from './Image';
 import {
   DropdownMenu,
@@ -14,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from './Dropdown';
 import { User, LogOut } from 'lucide-react';
+import { Button } from './Button';
 
 const Header = () => {
   const router = useRouter();

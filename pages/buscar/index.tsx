@@ -2,10 +2,10 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import BeerThumbnail from '../../components/BeerThumbnail';
 import BreweryThumbnail from '../../components/BreweryThumbnail';
-import Button from '../../components/Button';
 import useSearch from '../../hooks/useSearch';
 import { MdSearch } from 'react-icons/md';
 import { BreweryResponse } from '../../types/brewery';
+import { Button } from '@/components/Button';
 
 const Search = () => {
   const { query: { q, type = 'cervezas' } = {} } = useRouter();
@@ -33,7 +33,7 @@ const Search = () => {
       );
     }
 
-    return <p className="text-base">Ooops! no encontramos ningun resultado</p>;
+    return <p className="text-base">Ooops! no encontramos ningun resultado.</p>;
   };
 
   const maybeRenderResult = () => {
@@ -132,8 +132,11 @@ const Search = () => {
               }}
               passHref
             >
-              <Button variant="secondary" active={!isTypeBreweries}>
-                Cervezas
+              <Button
+                variant={!isTypeBreweries ? 'default' : 'secondary'}
+                asChild
+              >
+                <a>Cervezas {}</a>
               </Button>
             </Link>
             <Link
@@ -146,8 +149,11 @@ const Search = () => {
               }}
               passHref
             >
-              <Button variant="secondary" active={isTypeBreweries}>
-                Cervecerias
+              <Button
+                variant={isTypeBreweries ? 'default' : 'secondary'}
+                asChild
+              >
+                <a>Cervecerias</a>
               </Button>
             </Link>
           </div>
