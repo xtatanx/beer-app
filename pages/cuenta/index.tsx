@@ -101,7 +101,7 @@ const Account = ({ providers }: AccountProps) => {
   return (
     <section className="mx-auto mb-6 max-w-xl pt-8 lg:mb-12">
       <h1 className="mb-4 text-2xl font-bold">Mi perfil</h1>
-      <article className="rounded-lg bg-white p-4 shadow-sm">
+      <article className="p-4">
         {hasBaseData ? (
           <div className="mb-8">
             <div className="relative mb-2 aspect-square w-20 overflow-hidden rounded-full bg-gray-200">

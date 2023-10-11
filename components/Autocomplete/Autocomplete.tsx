@@ -198,7 +198,7 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
                   overflow: 'auto',
                 },
               })}
-              className="rounded bg-white shadow"
+              className="rounded border bg-background shadow-sm"
             >
               <AutocompleteMenu></AutocompleteMenu>
             </div>

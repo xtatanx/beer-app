@@ -35,7 +35,7 @@ const BreweryDetail: NextPageWithLayout<BreweryDetailProps> = ({
     profile.social.twitter;
   return (
     <article>
-      <header className="relative mb-10 lg:mb-16 lg:bg-white lg:pb-8 lg:shadow">
+      <header className="relative mb-10 border-b pb-8 lg:mb-16 lg:pb-8">
         <div
           className="absolute left-0 top-0 h-52 w-full bg-gray-500 lg:h-72
         "

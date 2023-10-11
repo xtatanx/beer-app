@@ -13,7 +13,7 @@ const BreweryThumbnail = ({
   verified,
 }: BreweryThumbnailProps) => {
   return (
-    <article className="shadow-neutral-20 rounded-lg border border-neutral-200 bg-white shadow-md">
+    <article className="rounded-lg border shadow-sm">
       <Link href={`/cervecerias/${id}`}>
         <a>
           <div className="px-2 pb-2 pt-6">
