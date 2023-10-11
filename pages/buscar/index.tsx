@@ -44,7 +44,7 @@ const Search = () => {
             return (
               <div
                 key={id}
-                className="shadow-neutral-20 rounded-lg border border-neutral-200 bg-white shadow-md"
+                className="shadow-neutral-20 rounded-lg border border-neutral-200 shadow-md"
               >
                 <div className="px-2 pb-2 pt-6">
                   <div className="relative mb-4 aspect-square animate-pulse bg-gray-200"></div>

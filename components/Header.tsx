@@ -90,7 +90,7 @@ const Header = () => {
   };
 
   return (
-    <header className="border border-b-neutral-200 bg-neutral-100 px-4 py-2 md:px-20 lg:flex lg:items-center lg:gap-8">
+    <header className="border-b px-4 py-2 md:px-20 lg:flex lg:items-center lg:gap-8">
       <div className="hidden lg:block lg:flex-[1_0_140px]">
         <div className="h-10 w-10 rounded-full bg-red-200 "></div>
       </div>

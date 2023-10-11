@@ -133,7 +133,7 @@ const ReviewBox = ({
   }, [isEditing, textAreaRef]);
 
   return (
-    <div className="flex items-start gap-4 rounded-l bg-white p-8 shadow-sm">
+    <div className="flex items-start gap-4  border-b p-8">
       <div className="relative aspect-square w-12 shrink-0 overflow-hidden rounded-full border border-gray-100 bg-gray-200">
         {userProfilePic ? (
           <Image

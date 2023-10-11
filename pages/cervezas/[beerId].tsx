@@ -58,8 +58,8 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
   return (
     <section className="mb-6 grid gap-4 pt-8 md:mb-12 md:auto-cols-min md:grid-flow-col md:grid-cols-12 md:gap-8">
       <article className="md:col-span-4">
-        <div className="rounded-lg bg-white p-8 shadow-sm ">
-          <div className="relative mb-6 aspect-square rounded-lg border shadow-sm">
+        <div className="rounded-lg border p-8 shadow-sm">
+          <div className="relative mb-6 aspect-square">
             <Image
               priority
               src={profileImage}
@@ -144,7 +144,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
             <ReviewBox beerId={_id}></ReviewBox>
           </div>
         ) : null}
-        <div className="rounded-l bg-white p-8 shadow-sm">
+        <div className="p-8">
           <div className="mb-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <h2 className="text-xl font-bold">
               Opiniones{' '}
