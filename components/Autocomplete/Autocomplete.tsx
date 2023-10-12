@@ -17,6 +17,7 @@ import { MdSearch } from 'react-icons/md';
 import useAutocomplete from '../../hooks/useAutocomplete';
 import AutocompleteContext from './AutocompleteContext';
 import AutocompleteMenu from './AutocompleteMenu';
+import { Input } from '../Input';
 
 type AutocompleteProps = {
   placeholder: string;
@@ -163,8 +164,8 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
         refs,
       }}
     >
-      <div className="relative flex">
-        <input
+      <div className="relative flex items-center">
+        <Input
           {...getReferenceProps({
             ref: reference,
             onChange: handleInputChange,
@@ -174,9 +175,9 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
             placeholder,
             'aria-autocomplete': 'list',
           })}
-          className="flex-1 rounded py-2 pr-4 pl-10"
+          className="pl-10"
           type="text"
-        />
+        ></Input>
         <div className="absolute left-0 flex aspect-square h-full items-center justify-center text-gray-600">
           <MdSearch></MdSearch>
         </div>
