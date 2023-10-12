@@ -16,6 +16,7 @@ import Image from '../Image';
 import useBeerComments from '../../hooks/useBeerComments';
 import type { ReviewBoxProps } from './types';
 import type { PreviewImage } from './types';
+import { Textarea } from '../TextArea';
 
 const starsArray = Array.from({ length: 5 }, (_, index) => index + 1);
 const limit = 250;
@@ -169,14 +170,14 @@ const ReviewBox = ({
                 ))}
               </div>
             </div>
-            <div className="flex flex-col py-4">
-              <textarea
+            <div className="flex flex-col gap-1 py-4">
+              <Textarea
                 ref={textAreaRef}
-                className="block h-36 w-full resize-none rounded-md bg-gray-200 px-4 py-3 text-gray-600"
                 placeholder={placeholder}
                 onChange={handleTextAreaChange}
                 value={review}
-              ></textarea>
+                className="h-28"
+              ></Textarea>
               <span className={reviewStatusClasses}>
                 {review.length}/{limit}
               </span>

@@ -68,7 +68,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border focus-visible:ring-ring focus-visible:ring-offset-2;
   }
   body {
     @apply bg-background text-foreground;

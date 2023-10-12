@@ -4,6 +4,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
 
 type SignInErrorTypes =
   | 'Signin'
@@ -71,24 +72,27 @@ const SignIn: NextPageWithLayout<SignInProps> = ({
           if (provider.name === 'Email') {
             return (
               <div key={provider.name}>
-                <form method="post" action="/api/auth/signin/email">
+                <form
+                  method="post"
+                  action="/api/auth/signin/email"
+                  className="flex flex-col"
+                >
                   <input
                     name="csrfToken"
                     type="hidden"
                     defaultValue={csrfToken}
                   />
-                  <input
+
+                  <Input
                     type="email"
                     id="email"
                     name="email"
                     placeholder="Ingresa tu correo electronico"
-                    className="mb-4 w-full rounded-md bg-gray-200 px-4 py-3 text-gray-800"
-                  />
-                  <div className="flex flex-col">
-                    <Button type="submit" size="lg">
-                      Ingresar con Email
-                    </Button>
-                  </div>
+                    className="mb-4 h-12"
+                  ></Input>
+                  <Button type="submit" size="lg">
+                    Ingresar con Email
+                  </Button>
                 </form>
                 <div className="flex items-center gap-4 py-8">
                   <hr className="flex-grow" />

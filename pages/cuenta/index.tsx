@@ -11,6 +11,9 @@ import useUser from '../../hooks/useUser';
 import { getUser } from '../../lib/userService';
 import { authOptions } from '../api/auth/[...nextauth]';
 import { Button } from '@/components/Button';
+import { Input } from '@/components/Input';
+import { Label } from '@/components/Label';
+import { Textarea } from '@/components/TextArea';
 
 // TODO: unify Provider type
 type Provider = {
@@ -141,63 +144,78 @@ const Account = ({ providers }: AccountProps) => {
         >
           {({ dirty, isValid, isSubmitting }) => (
             <Form className="mb-12 flex flex-col items-start gap-5">
-              <label htmlFor="fistName" className="block w-full">
-                <span className="mb-2 block font-bold">Nombres</span>
-                <Field
-                  className="block w-full rounded-md bg-gray-200 px-4 py-3 text-gray-800"
-                  id="firstName"
-                  type="text"
-                  placeholder="Tu nombre"
-                  name="firstName"
-                />
+              <div className="w-full">
+                <Label htmlFor="fistName">Nombres *</Label>
+                <Field name="firstName">
+                  {/* @ts-ignore */}
+                  {({ field }) => (
+                    <Input
+                      id="firstName"
+                      type="text"
+                      placeholder="Tu nombre"
+                      {...field}
+                    ></Input>
+                  )}
+                </Field>
                 <ErrorMessage
-                  className="text-xs font-semibold text-red-600"
+                  className="text-xs text-red-600"
                   component="span"
                   name="firstName"
                 />
-              </label>
-              <label htmlFor="lastName" className="block w-full">
-                <span className="mb-2 block font-bold">Apellidos</span>
-                <Field
-                  className="block w-full rounded-md bg-gray-200 px-4 py-3 text-gray-800"
-                  id="lastName"
-                  type="text"
-                  placeholder="Tu apellido"
-                  name="lastName"
-                />
+              </div>
+              <div className="w-full">
+                <Label htmlFor="lastName">Apellidos *</Label>
+                <Field name="lastName">
+                  {/* @ts-ignore */}
+                  {({ field }) => (
+                    <Input
+                      id="lastName"
+                      type="text"
+                      placeholder="Tu apellido"
+                      {...field}
+                    ></Input>
+                  )}
+                </Field>
                 <ErrorMessage
-                  className="text-xs font-semibold text-red-600"
+                  className="text-xs text-red-600"
                   component="span"
                   name="lastName"
                 />
-              </label>
-              <label htmlFor="bio" className="block w-full">
-                <span className="mb-2 block font-bold">Biografía</span>
-                <Field
-                  className="block h-20 w-full resize-y rounded-md bg-gray-200 px-4 py-3 text-gray-800"
-                  id="bio"
-                  placeholder="Cuentanos algo de ti"
-                  name="bio"
-                  as="textarea"
-                />
+              </div>
+              <div className="w-full">
+                <Label htmlFor="bio">Biografía</Label>
+                <Field name="bio">
+                  {/* @ts-ignore */}
+                  {({ field }) => (
+                    <Textarea
+                      id="bio"
+                      placeholder="Cuentanos algo de ti"
+                      {...field}
+                    ></Textarea>
+                  )}
+                </Field>
                 <ErrorMessage
-                  className="text-xs font-semibold text-red-600"
+                  className="text-xs text-red-600"
                   component="span"
                   name="bio"
                 />
-              </label>
-              <label htmlFor="email" className="block w-full">
-                <span className="mb-2 block font-bold">Email</span>
-                <Field
-                  disabled
-                  className="block w-full rounded-md bg-gray-200 px-4 py-3 text-gray-400"
-                  id="email"
-                  type="email"
-                  placeholder="Tu email"
-                  name="email"
-                />
+              </div>
+              <label className="w-full">
+                <Label htmlFor="email">Email *</Label>
+                <Field name="email">
+                  {/* @ts-ignore */}
+                  {({ field }) => (
+                    <Input
+                      disabled
+                      id="email"
+                      type="email"
+                      placeholder="Tu email"
+                      {...field}
+                    ></Input>
+                  )}
+                </Field>
                 <ErrorMessage
-                  className="text-xs font-semibold text-red-600"
+                  className="text-xs text-red-600"
                   component="span"
                   name="email"
                 />
