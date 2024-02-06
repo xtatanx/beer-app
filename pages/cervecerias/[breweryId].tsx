@@ -44,12 +44,7 @@ const BreweryDetail: NextPageWithLayout<BreweryDetailProps> = ({
           <div className="items-end lg:flex lg:gap-4">
             <div className="mb-4 flex flex-col items-center pt-4 lg:mb-0 lg:shrink-0 lg:pt-24">
               <div className="relative aspect-square w-56 overflow-hidden rounded-full border-4 border-white lg:border-8">
-                <Image
-                  src={profile.profileImage}
-                  alt=""
-                  objectFit="cover"
-                  layout="fill"
-                ></Image>
+                <Image src={profile.profileImage} alt="" fill></Image>
               </div>
               <h1 className="flex items-center gap-2 text-xl font-bold">
                 {profile.name}{' '}

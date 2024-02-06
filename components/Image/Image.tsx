@@ -1,5 +1,5 @@
-import NextImage from "next/image";
-import type { ImageProps } from "next/image";
+import NextImage from 'next/image';
+import type { ImageProps } from 'next/image';
 
 const Image = (props: ImageProps) => {
   const { src, ...rest } = props;
@@ -12,15 +12,7 @@ const Image = (props: ImageProps) => {
     imageProps.unoptimized = true;
   }
 
-  return (
-    <NextImage
-      src={src}
-      {...imageProps}
-      style={{
-        maxWidth: "100%",
-        height: "auto"
-      }} />
-  );
+  return <NextImage src={src} {...imageProps} />;
 };
 
 export default Image;

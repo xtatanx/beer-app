@@ -15,16 +15,9 @@ const BreweryThumbnail = ({
   return (
     <article className="rounded-lg border shadow-sm">
       <Link href={`/cervecerias/${id}`}>
-
         <div className="px-2 pb-2 pt-6">
           <div className="relative aspect-square">
-            <Image
-              src={profileImage}
-              alt={name}
-              className="mb-4"
-              layout="fill"
-              objectFit="contain"
-            />
+            <Image src={profileImage} alt={name} className="mb-4" fill />
           </div>
         </div>
         <div className="p-4">
@@ -49,7 +42,6 @@ const BreweryThumbnail = ({
           </div>
           <div className="flex items-center gap-1 text-sm">{location}</div>
         </div>
-
       </Link>
     </article>
   );

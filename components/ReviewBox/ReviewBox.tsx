@@ -137,13 +137,7 @@ const ReviewBox = ({
     <div className="flex items-start gap-4  border-b p-8">
       <div className="relative aspect-square w-12 shrink-0 overflow-hidden rounded-full border border-gray-100 bg-gray-200">
         {userProfilePic ? (
-          <Image
-            src={userProfilePic}
-            alt=""
-            layout="fixed"
-            width={48}
-            height={48}
-          />
+          <Image src={userProfilePic} alt="" width={48} height={48} />
         ) : null}
       </div>
       {isEditing ? (
@@ -190,15 +184,7 @@ const ReviewBox = ({
                     key={image.id}
                     className="group relative aspect-square w-24"
                   >
-                    <Image
-                      src={image.src}
-                      alt=""
-                      width={96}
-                      height={96}
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                    />
+                    <Image src={image.src} alt="" width={96} height={96} fill />
                     <button
                       className="absolute right-0 top-0 opacity-0 transition-opacity group-hover:opacity-100"
                       type="button"

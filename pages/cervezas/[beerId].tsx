@@ -64,14 +64,14 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
               priority
               src={profileImage}
               alt=""
-              layout="fill"
-              objectFit="contain"
+              fill
+              className="object-contain"
             />
-            <span className="absolute left-3 top-3 flex items-center gap-1 rounded-lg bg-yellow-400 py-2 px-2 text-base font-bold leading-none shadow">
+            <span className="absolute left-3 top-3 flex items-center gap-1 rounded-lg bg-yellow-400 px-2 py-2 text-base font-bold leading-none shadow">
               <BsStarFill></BsStarFill>
               {rate.value.toFixed(1)}
             </span>
-            <button className="group absolute right-1 top-1 py-2 px-2  text-lg">
+            <button className="group absolute right-1 top-1 px-2 py-2  text-lg">
               <BsSuitHeartFill className="text-gray-500 transition ease-in-out group-hover:text-red-600"></BsSuitHeartFill>
             </button>
           </div>
@@ -89,7 +89,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                 <span className="text-sm">Palida</span>
                 <div className="relative h-2 w-full rounded-md bg-[linear-gradient(90deg,rgba(255,255,69,1)0%,rgba(254,216,73,1)8%,rgba(195,89,0,1)30%,rgba(30,2,4,1)100%)]">
                   <div
-                    className="absolute top-1/2 block aspect-square w-6 -translate-y-1/2 -translate-x-1/2 rounded-full border bg-slate-50"
+                    className="absolute top-1/2 block aspect-square w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-slate-50"
                     style={{
                       left: (srm * 100) / 70 + '%',
                     }}
@@ -106,7 +106,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                 <span className="text-sm">Bajo</span>
                 <div className="relative h-2 w-full rounded-md bg-gradient-to-r from-[#C7E497] to-[#257318]">
                   <div
-                    className="absolute top-1/2 block aspect-square w-6 -translate-y-1/2 -translate-x-1/2 rounded-full border bg-slate-50"
+                    className="absolute top-1/2 block aspect-square w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-slate-50"
                     style={{
                       left: (ibus * 100) / 100 + '%',
                     }}
@@ -123,7 +123,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                 <span className="text-sm">Bajo</span>
                 <div className="relative h-2 w-full rounded-md bg-gradient-to-r from-[#F9F959] to-[#EE1B2A]">
                   <div
-                    className="absolute top-1/2 block aspect-square w-6 -translate-y-1/2 -translate-x-1/2 rounded-full border bg-slate-50"
+                    className="absolute top-1/2 block aspect-square w-6 -translate-x-1/2 -translate-y-1/2 rounded-full border bg-slate-50"
                     style={{
                       left: (abv * 100) / 20 + '%',
                     }}
@@ -172,7 +172,6 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                         <div className="relative aspect-square w-14 overflow-hidden rounded-full bg-gray-400">
                           <Image
                             src={comment.user.profileImage}
-                            layout="fixed"
                             width={56}
                             height={56}
                             alt=""
@@ -226,12 +225,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                                 key={imageUrl}
                                 className="relative aspect-square w-20"
                               >
-                                <Image
-                                  src={imageUrl}
-                                  alt=""
-                                  layout="fill"
-                                  objectFit="cover"
-                                />
+                                <Image src={imageUrl} alt="" fill />
                               </div>
                             );
                           })}
