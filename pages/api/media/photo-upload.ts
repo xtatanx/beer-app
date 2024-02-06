@@ -35,7 +35,7 @@ export default async function handler(
           return;
         }
 
-        resolve(files?.file as formidable.File);
+        resolve((files as any).file[0]);
       });
     });
 
