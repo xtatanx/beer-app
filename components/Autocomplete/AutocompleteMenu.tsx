@@ -51,14 +51,15 @@ const AutocompleteMenu = () => {
                             ? `/cervezas/${item._id}`
                             : `/cervecerias/${item._id}`
                         }
+                        legacyBehavior
                       >
                         <div className="flex min-h-[48px] items-center gap-2">
                           <div className="relative aspect-square w-12">
                             <Image
-                              layout="fill"
-                              objectFit="contain"
+                              fill
                               src={item.profileImage}
                               alt=""
+                              className="object-cover"
                             ></Image>
                           </div>
                           <div>

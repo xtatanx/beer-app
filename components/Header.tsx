@@ -35,7 +35,13 @@ const Header = () => {
             <div className="flex items-center">
               <div className="relative aspect-square w-10 shrink-0 overflow-hidden rounded-full bg-gray-200">
                 {profileImage ? (
-                  <Image src={profileImage} alt="" width={40} height={40} />
+                  <Image
+                    src={profileImage}
+                    alt=""
+                    width={40}
+                    height={40}
+                    priority
+                  />
                 ) : (
                   <span className="flex h-full w-full items-center justify-center bg-gray-200 text-center text-xl font-bold">
                     {userInitial}

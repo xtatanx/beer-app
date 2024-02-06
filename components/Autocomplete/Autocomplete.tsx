@@ -61,7 +61,7 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
       return flattenList;
     }
   }, [result]);
-  const { x, y, reference, floating, strategy, context, refs } =
+  const { x, y, strategy, context, refs } =
     useFloating<HTMLInputElement>({
       open,
       onOpenChange(open) {
@@ -166,8 +166,8 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
     >
       <div className="relative flex items-center">
         <Input
+          ref={refs.setReference}
           {...getReferenceProps({
-            ref: reference,
             onChange: handleInputChange,
             onClick: handleClick,
             onKeyDown: handleKeyDown,
@@ -190,8 +190,8 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
             visuallyHiddenDismiss
           >
             <div
+              ref={refs.setFloating}
               {...getFloatingProps({
-                ref: floating,
                 style: {
                   position: strategy,
                   left: x ?? 0,
