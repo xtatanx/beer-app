@@ -1,5 +1,5 @@
-import NextImage from 'next/image';
-import type { ImageProps } from 'next/image';
+import NextImage from "next/legacy/image";
+import type { ImageProps } from "next/legacy/image";
 
 const Image = (props: ImageProps) => {
   const { src, ...rest } = props;
