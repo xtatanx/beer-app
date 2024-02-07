@@ -6,7 +6,7 @@ import cloudinary from 'cloudinary';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const session = await getServerSession(req, res, authOptions);
@@ -18,14 +18,10 @@ export default async function handler(
       return;
     }
 
-    console.log('athenticated');
-
     if (req.method !== 'POST') {
       res.status(405).end();
       return;
     }
-
-    console.log('correct method');
 
     const file = await new Promise<formidable.File>((resolve, reject) => {
       const form = formidable();
@@ -48,12 +44,10 @@ export default async function handler(
       folder: process.env.CLOUDINARY_FOLDER,
     });
 
-    console.log(result);
     res.json({
       image: result.secure_url,
     });
   } catch (e) {
-    console.log(e);
     res.status(500).end();
   }
 }

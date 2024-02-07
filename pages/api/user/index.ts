@@ -10,7 +10,7 @@ type Error = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<UserResponse | Error | null>
+  res: NextApiResponse<UserResponse | Error | null>,
 ) {
   try {
     const session = await unstable_getServerSession(req, res, authOptions);
@@ -42,7 +42,6 @@ export default async function handler(
       return;
     }
   } catch (e) {
-    console.log(e);
     res.status(500).end();
   }
 }

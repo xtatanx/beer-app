@@ -184,7 +184,7 @@ const ReviewBox = ({
                     key={image.id}
                     className="group relative aspect-square w-24"
                   >
-                    <Image src={image.src} alt="" width={96} height={96} fill />
+                    <Image src={image.src} alt="" width={96} height={96} />
                     <button
                       className="absolute right-0 top-0 opacity-0 transition-opacity group-hover:opacity-100"
                       type="button"

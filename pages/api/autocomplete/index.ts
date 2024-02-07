@@ -8,7 +8,7 @@ type Error = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<AutocompleteResponse | Error>
+  res: NextApiResponse<AutocompleteResponse | Error>,
 ) {
   try {
     const { method } = req;
@@ -28,7 +28,6 @@ export default async function handler(
     const result = await autocomplete(term);
     res.json(result);
   } catch (e) {
-    console.log(e);
     res.status(500).json({ error: 'Internal server error' });
   }
 }

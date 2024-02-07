@@ -3,7 +3,7 @@ import { getById } from '../../../lib/breweryService';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
     const { breweryId } = req.query;
@@ -20,7 +20,6 @@ export default async function handler(
 
     res.json(brewery);
   } catch (e) {
-    console.log(e);
     let message = '';
 
     if (e instanceof Error) {

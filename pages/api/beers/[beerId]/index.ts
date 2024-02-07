@@ -9,7 +9,7 @@ type Error = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<BeerResponse | Error>
+  res: NextApiResponse<BeerResponse | Error>,
 ) {
   try {
     const { beerId } = req.query;
@@ -26,7 +26,6 @@ export default async function handler(
 
     res.json(beer);
   } catch (e) {
-    console.log(e);
     let message = '';
     if (e instanceof Error) {
       message = e.message;

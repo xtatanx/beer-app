@@ -58,7 +58,7 @@ Default.parameters = {
             image:
               'https://res.cloudinary.com/beer-app/image/upload/v1672488534/dev-content/clzzu1jciah81nyo9wfz.jpg',
             bio: '',
-          })
+          }),
         );
       }),
       rest.post('/api/media/photo-upload', async (req, res, ctx) => {
@@ -66,11 +66,10 @@ Default.parameters = {
           ctx.json({
             image:
               'https://res.cloudinary.com/beer-app/image/upload/v1679246404/dev-content/va2w7ctmgqmueyu9vn9h.jpg',
-          })
+          }),
         );
       }),
       rest.post('/api/comments', async (req, res, ctx) => {
-        console.log(await req.json());
         return res(ctx.status(204));
       }),
     ],

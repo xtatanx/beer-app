@@ -8,7 +8,7 @@ type Error = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<SearchResponse | Error>
+  res: NextApiResponse<SearchResponse | Error>,
 ) {
   try {
     const { method } = req;
@@ -34,7 +34,6 @@ export default async function handler(
 
     res.json(result as SearchResponse);
   } catch (e) {
-    console.log(e);
     res.status(500).json({ error: 'Internal server error' });
   }
 }

@@ -1,16 +1,16 @@
 import cloudinary from 'cloudinary';
 import formidable from 'formidable';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { unstable_getServerSession } from 'next-auth';
+import { getServerSession } from 'next-auth';
 import { updateUser } from '../../../lib/userService';
 import { authOptions } from '../auth/[...nextauth]';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
-    const session = await unstable_getServerSession(req, res, authOptions);
+    const session = await getServerSession(req, res, authOptions);
 
     if (!session) {
       res.status(401).json({
@@ -57,7 +57,6 @@ export default async function handler(
     res.status(405).end();
     return;
   } catch (e) {
-    console.log(e);
     res.status(500).end();
   }
 }
