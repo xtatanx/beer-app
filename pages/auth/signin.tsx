@@ -1,10 +1,20 @@
-import { getCsrfToken, getProviders, signIn } from 'next-auth/react';
+import { getProviders, signIn } from 'next-auth/react';
 import { NextPageWithLayout } from '../_app';
 import { FcGoogle } from 'react-icons/fc';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import { Button } from '@/components/Button';
 import { Input } from '@/components/Input';
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from '@/components/Form';
 
 type SignInErrorTypes =
   | 'Signin'
@@ -33,28 +43,43 @@ type SignInProps = {
   error: SignInErrorTypes;
 };
 
+const formSchema = z.object({
+  email: z
+    .string()
+    .email({ message: 'Correo electronico invalido' })
+    .max(254, { message: 'El correo exede el limite de caracteres' }),
+});
+
+const errors: Record<SignInErrorTypes, string> = {
+  Signin: 'Trata ingresando con una cuenta distinta.',
+  OAuthSignin: 'Trata ingresando con una cuenta distinta.',
+  OAuthCallback: 'Trata ingresando con una cuenta distinta.',
+  OAuthCreateAccount: 'Trata ingresando con una cuenta distinta.',
+  EmailCreateAccount: 'Trata ingresando con una cuenta distinta.',
+  Callback: 'Trata ingresando con una cuenta distinta.',
+  OAuthAccountNotLinked:
+    'Para unificar tu cuenta trata iniciando sesion con la cuenta que te registraste inicialmente.',
+  EmailSignin: 'El email no se pudo enviar.',
+  CredentialsSignin:
+    'El registro fallo. Asegurate que los datos que ingresaste son correctos.',
+  SessionRequired: 'Porfavor inicia sesion para acceder a esta pagina.',
+  default: 'No se pudo completar el ingreso.',
+};
+
 const SignIn: NextPageWithLayout<SignInProps> = ({
   providers,
-  csrfToken,
   error: errorType,
 }) => {
-  const errors: Record<SignInErrorTypes, string> = {
-    Signin: 'Trata ingresando con una cuenta distinta.',
-    OAuthSignin: 'Trata ingresando con una cuenta distinta.',
-    OAuthCallback: 'Trata ingresando con una cuenta distinta.',
-    OAuthCreateAccount: 'Trata ingresando con una cuenta distinta.',
-    EmailCreateAccount: 'Trata ingresando con una cuenta distinta.',
-    Callback: 'Trata ingresando con una cuenta distinta.',
-    OAuthAccountNotLinked:
-      'Para unificar tu cuenta trata iniciando sesion con la cuenta que te registraste inicialmente.',
-    EmailSignin: 'El email no se pudo enviar.',
-    CredentialsSignin:
-      'El registro fallo. Asegurate que los datos que ingresaste son correctos.',
-    SessionRequired: 'Porfavor inicia sesion para acceder a esta pagina.',
-    default: 'No se pudo completar el ingreso.',
-  };
-
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: '',
+    },
+  });
   const callbackUrl = useRouter().query?.callbackUrl as string;
+  const onSubmitEmail = async ({ email }: z.infer<typeof formSchema>) => {
+    await signIn('email', { email, callbackUrl });
+  };
 
   const error = errorType && (errors[errorType] ?? errors.default);
   return (
@@ -72,28 +97,39 @@ const SignIn: NextPageWithLayout<SignInProps> = ({
           if (provider.name === 'Email') {
             return (
               <div key={provider.name}>
-                <form
-                  method="post"
-                  action="/api/auth/signin/email"
-                  className="flex flex-col"
-                >
-                  <input
-                    name="csrfToken"
-                    type="hidden"
-                    defaultValue={csrfToken}
-                  />
-
-                  <Input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="Ingresa tu correo electronico"
-                    className="mb-4 h-12"
-                  ></Input>
-                  <Button type="submit" size="lg">
-                    Ingresar con Email
-                  </Button>
-                </form>
+                <Form {...form}>
+                  <form
+                    onSubmit={form.handleSubmit(onSubmitEmail)}
+                    className="flex flex-col"
+                  >
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem className="mb-4">
+                          <FormControl>
+                            <Input
+                              type="email"
+                              placeholder="Ingresa tu correo electronico"
+                              className="h-12"
+                              {...field}
+                            ></Input>
+                          </FormControl>
+                          <FormMessage></FormMessage>
+                        </FormItem>
+                      )}
+                    ></FormField>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      disabled={form.formState.isSubmitting}
+                    >
+                      {form.formState.isSubmitting
+                        ? 'Enviando'
+                        : 'Ingresar con Email'}
+                    </Button>
+                  </form>
+                </Form>
                 <div className="flex items-center gap-4 py-8">
                   <hr className="flex-grow" />
                   O tambien puedes:
@@ -128,19 +164,16 @@ SignIn.getLayout = (page) => {
 };
 
 export const getServerSideProps = async (
-  context: GetServerSidePropsContext
+  context: GetServerSidePropsContext,
 ) => {
   const providersPromise = getProviders();
-  const crsfTokenPromise = getCsrfToken(context);
   const { query } = context;
 
   const providers = await providersPromise;
-  const csrfToken = await crsfTokenPromise;
 
   return {
     props: {
       providers,
-      csrfToken,
       error: query?.error ?? null,
     },
   };
