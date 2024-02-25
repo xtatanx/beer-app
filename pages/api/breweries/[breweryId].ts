@@ -1,5 +1,5 @@
+import { getById } from '@/lib/breweryService';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getById } from '../../../lib/breweryService';
 
 export default async function handler(
   req: NextApiRequest,

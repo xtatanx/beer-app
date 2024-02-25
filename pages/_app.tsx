@@ -6,6 +6,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { SWRConfig } from 'swr';
 import Layout from '../components/Layout';
 import '../styles/globals.css';
+import { Toaster } from '@/components/Toaster';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -30,6 +31,7 @@ function MyApp({
     <SessionProvider session={session}>
       <SWRConfig value={fallback ? { fallback } : undefined}>
         {getLayout(<Component {...pageProps} />)}
+        <Toaster></Toaster>
       </SWRConfig>
     </SessionProvider>
   );
