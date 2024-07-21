@@ -61,28 +61,27 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
       return flattenList;
     }
   }, [result]);
-  const { x, y, strategy, context, refs } =
-    useFloating<HTMLInputElement>({
-      open,
-      onOpenChange(open) {
-        if (hints) {
-          setOpen(open);
-        }
-      },
-      middleware: [
-        offset(6),
-        size({
-          apply({ rects, availableHeight, elements }) {
-            Object.assign(elements.floating.style, {
-              width: `${rects.reference.width}px`,
-              maxHeight: `${availableHeight}px`,
-            });
-          },
-          padding: 10,
-        }),
-      ],
-      whileElementsMounted: autoUpdate,
-    });
+  const { x, y, strategy, context, refs } = useFloating<HTMLInputElement>({
+    open,
+    onOpenChange(open) {
+      if (hints) {
+        setOpen(open);
+      }
+    },
+    middleware: [
+      offset(6),
+      size({
+        apply({ rects, availableHeight, elements }) {
+          Object.assign(elements.floating.style, {
+            width: `${rects.reference.width}px`,
+            maxHeight: `${availableHeight}px`,
+          });
+        },
+        padding: 10,
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
+  });
   const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions(
     [
       useRole(context, { role: 'listbox' }),
@@ -95,7 +94,7 @@ const Autocomplete = ({ placeholder }: AutocompleteProps) => {
         loop: true,
         focusItemOnHover: false,
       }),
-    ]
+    ],
   );
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {

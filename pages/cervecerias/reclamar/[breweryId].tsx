@@ -78,7 +78,7 @@ const ClaimBreweryForm: NextPageWithLayout = () => {
       });
       reset();
     }
-  }, [isSubmitSuccessful, reset]);
+  }, [isSubmitSuccessful, reset, toast]);
 
   return (
     <article>

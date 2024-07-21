@@ -4,7 +4,7 @@ import { BeerResponse, GetAllOptions } from '../../../types/beer';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<BeerResponse[]>
+  res: NextApiResponse<BeerResponse[]>,
 ) {
   try {
     const { sort, limit, fields, breweryId } = req.query;

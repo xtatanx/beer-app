@@ -10,7 +10,7 @@ const useAutocomplete = (query: string | null) => {
       (url: string) => fetch(url).then((res) => res.json()),
       {
         keepPreviousData: true,
-      }
+      },
     );
 
   return { result: data, error, isLoading, mutate, isValidating };

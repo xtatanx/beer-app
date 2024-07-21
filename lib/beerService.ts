@@ -114,7 +114,7 @@ export const getAll = async (options: GetAllOptions = {}) => {
   pipeline.push(
     ...withCategoryPipeline,
     ...withBreweryPipeline,
-    ...withRatePipeline
+    ...withRatePipeline,
   );
 
   if (typeof sort === 'string') {

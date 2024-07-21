@@ -131,7 +131,8 @@ const Search = () => {
                 },
               }}
               passHref
-              legacyBehavior>
+              legacyBehavior
+            >
               <Button
                 variant={!isTypeBreweries ? 'default' : 'secondary'}
                 asChild
@@ -148,7 +149,8 @@ const Search = () => {
                 },
               }}
               passHref
-              legacyBehavior>
+              legacyBehavior
+            >
               <Button
                 variant={isTypeBreweries ? 'default' : 'secondary'}
                 asChild
