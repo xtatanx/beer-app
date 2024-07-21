@@ -57,6 +57,6 @@ export const updateUser = async (email: string, fields: UpdateFields) => {
           : {}),
         ...fields,
       },
-    }
+    },
   );
 };

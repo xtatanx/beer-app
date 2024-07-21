@@ -9,7 +9,7 @@ enum Filter {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { limit, userId, beerId } = req.query;
   const options: GetOptions = {};

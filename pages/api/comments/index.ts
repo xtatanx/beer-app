@@ -10,7 +10,7 @@ type Error = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<CommentResponse[] | Error>
+  res: NextApiResponse<CommentResponse[] | Error>,
 ) {
   try {
     if (req.method === 'GET') {

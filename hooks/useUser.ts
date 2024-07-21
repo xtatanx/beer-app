@@ -6,7 +6,7 @@ type Email = string | null | undefined;
 const useUser = (email: Email) => {
   const { data, error, isLoading, mutate, isValidating } = useSWR<UserResponse>(
     email ? ['/api/user', email] : null,
-    ([url]) => fetch(url).then((res) => res.json())
+    ([url]) => fetch(url).then((res) => res.json()),
   );
 
   return { user: data, error, isLoading, mutate, isValidating };

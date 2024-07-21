@@ -31,7 +31,7 @@ VerifyRequest.getLayout = (page) => {
 };
 
 export const getServerSideProps = async (
-  context: GetServerSidePropsContext
+  context: GetServerSidePropsContext,
 ) => {
   const { req } = context;
   const url = new URL(req.headers.referer as string);

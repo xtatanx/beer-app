@@ -4,7 +4,7 @@ import { getAll } from '../../../lib/breweryService';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<BreweryResponse[]>
+  res: NextApiResponse<BreweryResponse[]>,
 ) {
   try {
     const { limit } = req.query;

@@ -191,7 +191,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                                   includeSeconds: true,
                                   addSuffix: true,
                                   locale: es,
-                                }
+                                },
                               )}
                             </span>
                           </div>
@@ -210,7 +210,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
                                     return <BsStarHalf key={index} />;
                                   }
                                   return <BsStar key={index} />;
-                                }
+                                },
                               )}
                             </div>
                           </div>
@@ -243,7 +243,7 @@ const BeerDetail: NextPage<BeerDetailProps> = ({ profile }) => {
 };
 
 export const getServerSideProps = async (
-  context: GetServerSidePropsContext<BeerDetailQuery>
+  context: GetServerSidePropsContext<BeerDetailQuery>,
 ) => {
   try {
     const { params } = context;
@@ -270,7 +270,7 @@ export const getServerSideProps = async (
         comments: JSON.parse(JSON.stringify(comments)),
         fallback: {
           [`/api/beers/${params.beerId}/comments`]: JSON.parse(
-            JSON.stringify(comments)
+            JSON.stringify(comments),
           ),
         },
       },

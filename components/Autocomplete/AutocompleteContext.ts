@@ -5,7 +5,7 @@ import type { BeerResponse, BreweryResponse } from '../../types/autocomplete';
 
 export type AutocompleteContext = {
   getItemProps: (
-    userProps?: HTMLProps<HTMLElement> | undefined
+    userProps?: HTMLProps<HTMLElement> | undefined,
   ) => Record<string, unknown>;
   listRef: MutableRefObject<HTMLElement[]>;
   setOpen: Dispatch<SetStateAction<boolean>>;
